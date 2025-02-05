@@ -1,6 +1,7 @@
+package tracker;
 
 public class Category {
-    private static int idCounter = 1; //Auto-incrementing ID for each Category
+    private static int idCounter = 1; //Auto-incrementing ID for each tracker.Category
     private int id; //Unique category ID
     private String name;    // Name of the category (e.g., Groceries, Bills)
     private String type;    // Either "Income" or Expense
