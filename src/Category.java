@@ -1,3 +1,4 @@
+
 public class Category {
     private static int idCounter = 1; //Auto-incrementing ID for each Category
     private int id; //Unique category ID
@@ -17,8 +18,8 @@ public class Category {
     public String getType() { return type; }
     
     
-    @override
+    @Override
     public String toString() {
-        return String.format("Category{id=%d, name='%s', type='%s'}", id, name, type);
+        return name + " (" + type + ")";
     }
 }
