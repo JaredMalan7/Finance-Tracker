@@ -47,6 +47,7 @@ public class Main {
     public static void runTests() {
         testTransactionHandling();
         testEdgeCases();
+        testCategoryManagement();
 
     }
 
@@ -93,5 +94,27 @@ public class Main {
         //Print results
         System.out.println("\nExpected: Transactions should handle zero, negative, and incorrect signs correctly.");
         tracker.printTransactions();
+    }
+
+    public static void testCategoryManagement() {
+        System.out.println("\n=== TEST 3: Category Management ===");
+        FinanceTracker tracker = new FinanceTracker();
+
+        //Create categories
+        Category rent = new Category("Rent", "Expense");
+        Category groceries = new Category("Groceries", "Expense");
+
+        tracker.addCategory(rent);
+        tracker.addCategory(groceries);
+
+        // Attempt duplicate category
+        tracker.addCategory(new Category("Rent", "Expense"));
+
+        // Attempt to add a transaction to a non-existing category
+        tracker.addTransaction(new Transaction(-1000, new Date(), new Category("Non-Existing", "Expense"), "Should fail?"));
+
+        // Print categories
+        System.out.println("\nExpected: Duplicate category should be handled, and invalid category transactions should be flagged.");
+        tracker.printCategories();
     }
 }
