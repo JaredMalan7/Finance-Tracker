@@ -15,6 +15,21 @@ public class FinanceTracker {
 
     // Adds a new transaction to the tracker.
     public void addTransaction(Transaction transaction) {
+
+        //Check if Category Exists before adding a transaction
+        boolean categoryExists = false;
+        for (Category c : categories) {
+            if (c.getName().equalsIgnoreCase(transaction.getCategory().getName())) {
+                categoryExists = true;
+                break;
+            }
+        }
+        if (!categoryExists) {
+            System.out.println("❌ Error: Cannot add transaction. Category '" + transaction.getCategory().getName() + "' does not exist.");
+            return;
+        }
+        //=============================//
+        // Validate Transactions
         if (transaction.getAmount() == 0) {
             System.out.println("⚠\uFE0F Warning: Zero-amount transactions are ignored.");
             return;
