@@ -31,7 +31,7 @@ public class FinanceTracker {
         //=============================//
         // Validate Transactions
         if (transaction.getAmount() == 0) {
-            System.out.println("⚠\uFE0F Warning: Zero-amount transactions are ignored.");
+            System.out.println("⚠️ Warning: Zero-amount transactions are ignored.");
             return;
         }
         if (transaction.getCategory().getType().equals("Income") && transaction.getAmount() < 0) {
@@ -42,6 +42,7 @@ public class FinanceTracker {
             System.out.println("❌ Error: Positive expenses are not allowed. Use negative values.");
             return;
         }
+
         transactions.add(transaction);
     }
 
@@ -49,7 +50,7 @@ public class FinanceTracker {
     public void addCategory(Category category) {
         for (Category c : categories) {
             if (c.getName().equalsIgnoreCase(category.getName())) {
-                System.out.println("⚠\uFE0F Warning: Category '\" + category.getName() + \"' already exists. Skipping duplicate.");
+                System.out.println("⚠️ Warning: Category '" + category.getName() + "' already exists. Skipping duplicate.");
                 return;
             }
         }
