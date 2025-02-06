@@ -2,7 +2,7 @@ package tracker;
 import java.util.Date;
 
 public class Main {
-    private static final boolean DEBUG_MODE = false;  // Change to true to enable testing
+    private static final boolean DEBUG_MODE = true;  // Change to true to enable testing
 
     public static void main(String[] args) {
         System.out.println("=== Running Main Program ===");
@@ -48,6 +48,8 @@ public class Main {
         testTransactionHandling();
         testEdgeCases();
         testCategoryManagement();
+        testBalanceCalculations();
+        testPerformance();
 
     }
 
@@ -116,5 +118,54 @@ public class Main {
         // Print categories
         System.out.println("\nExpected: Duplicate category should be handled, and invalid category transactions should be flagged.");
         tracker.printCategories();
+    }
+
+    public static void testBalanceCalculations() {
+        System.out.println("\n=== TEST 4: Balance Calculations ===");
+        FinanceTracker tracker = new FinanceTracker();
+
+        // Create categories
+        Category salary = new Category("Salary", "Income");
+        Category rent = new Category("Rent", "Expense");
+
+        tracker.addCategory(salary);
+        tracker.addCategory(rent);
+
+        // Add transactions
+        tracker.addTransaction(new Transaction(5000, new Date(), salary, "Monthly salary"));
+        tracker.addTransaction(new Transaction(-2000, new Date(), rent, "Apartment rent"));
+        tracker.addTransaction(new Transaction(-500, new Date(), rent, "Utilities"));
+
+        // Print balance calculations
+        System.out.println("\nExpected Total Balance: $2500.00");
+        System.out.println("Actual Total Balance: $" + tracker.getTotalBalance());
+
+        System.out.println("\nExpected Total Income: $5000.00");
+        System.out.println("Actual Total Income: $" + tracker.getTotalIncome());
+
+        System.out.println("\nExpected Total Expenses: $-2500.00");
+        System.out.println("Actual Total Expenses: $" + tracker.getTotalExpense());
+    }
+
+    public static void testPerformance() {
+        System.out.println("\n=== TEST 5: Performance Test (1000 Transactions) ===");
+        FinanceTracker tracker = new FinanceTracker();
+        Category salary = new Category("Salary", "Income");
+
+        tracker.addCategory(salary);
+
+        long startTime = System.currentTimeMillis();
+
+        // Add 1000 transactions
+        for (int i = 0; i < 1000; i++) {
+            tracker.addTransaction(new Transaction(1000, new Date(), salary, "Salary payment #" + (i + 1)));
+        }
+
+        long endTime = System.currentTimeMillis();
+
+        // Print results
+        System.out.println("\nExpected: 1000 transactions processed efficiently.");
+        System.out.println("Actual: Transactions Count = " + tracker.getTotalBalance() / 1000);
+        System.out.println("Time Taken: " + (endTime - startTime) + "ms");
     }
 }
