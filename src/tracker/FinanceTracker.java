@@ -25,12 +25,20 @@ public class FinanceTracker {
         }
         if( transaction.getCategory().getType().equals("Expense") && transaction.getAmount() > 0){
             System.out.println("❌ Error: Positive expenses are not allowed. Use negative values.");
+            return;
         }
         transactions.add(transaction);
     }
 
     // Adds a new category to the tracker.
     public void addCategory(Category category) {
+        for (Category c : categories) {
+            if (c.getName().equalsIgnoreCase(category.getName())) {
+                System.out.println("⚠\uFE0F Warning: Category '\" + category.getName() + \"' already exists. Skipping duplicate.");
+                return;
+            }
+        }
+
         categories.add(category);
     }
 
