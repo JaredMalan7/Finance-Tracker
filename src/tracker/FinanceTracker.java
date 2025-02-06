@@ -15,6 +15,17 @@ public class FinanceTracker {
 
     // Adds a new transaction to the tracker.
     public void addTransaction(Transaction transaction) {
+        if (transaction.getAmount() == 0) {
+            System.out.println("⚠\uFE0F Warning: Zero-amount transactions are ignored.");
+            return;
+        }
+        if (transaction.getCategory().getType().equals("Income") && transaction.getAmount() < 0) {
+            System.out.println("❌ Error: Negative income transactions are not allowed.");
+            return;
+        }
+        if( transaction.getCategory().getType().equals("Expense") && transaction.getAmount() > 0){
+            System.out.println("❌ Error: Positive expenses are not allowed. Use negative values.");
+        }
         transactions.add(transaction);
     }
 
