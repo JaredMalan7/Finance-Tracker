@@ -3,7 +3,7 @@
 ## Overview
 Finance Tracker is a JavaFX-based desktop application designed to help users manage their finances by categorizing transactions, tracking balances, and analyzing spending habits. Users can add transactions, create categories, and visualize their financial data.
 
-### [Software Demo Video]
+### [Software Demo Video](https://youtu.be/mdiaQjjrseA)
 
 ## Features
 - **Add and Manage Transactions**: Users can enter income and expense transactions with descriptions and associated categories.
@@ -76,12 +76,12 @@ Finance-Tracker/
 
 ##  Useful Websites
 Here are some resources that were helpful during development:
-* Java 21 Documentation
-* JavaFX Official Documentation
-* Maven Official Guide
-* Homebrew (Mac Package Manager)
-* IntelliJ IDEA Documentation
-* GitHub Documentation
+* [Java 21 Documentation](https://docs.oracle.com/en/java/javase/21/)
+* [JavaFX Official Documentation](https://openjfx.io/)
+* [Maven Official Guide](https://maven.apache.org/guides/)
+* [Homebrew (Mac Package Manager)](https://brew.sh/)
+* [IntelliJ IDEA Documentation](https://www.jetbrains.com/idea/resources/)
+* [GitHub Documentation](https://docs.github.com/en/get-started)
 
 
 
